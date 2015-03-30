@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html ng-app="agApp" ng-controller="AgAppController as main">
+<html ng-app="agApp">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title ng-bind="main.title">AG</title>
+  <title ng-bind="title">{{title}}</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -19,8 +19,12 @@
   <!-- endinject -->
 </head>
 
-<body>
-test
+<body ng-controller="AgAppController as main">
+<div ui-view="navbar"></div>
+<div class="container">
+  <div ui-view></div>
+</div>
+
 <!-- inject:js -->
 <!-- the rest of the *.js files will be injected here -->
 <!-- endinject -->

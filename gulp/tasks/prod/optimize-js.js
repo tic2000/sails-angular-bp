@@ -6,11 +6,14 @@ var gulp   = require('gulp'),
  * Copy and minimize JS files
  */
 gulp.task('optimize:js', function() {
-  return gulp.src(config.src)
+  gulp.src(config.src)
+    .pipe(plugins.plumber())
+    .pipe(plugins.sourcemaps.init())
     .pipe(plugins.concat('ag.js'))
     .pipe(plugins.size({title: 'ag.js'}))
     .pipe(plugins.uglify(config.options))
     .pipe(plugins.rename('ag.min.js'))
+    .pipe(plugins.sourcemaps.write())
     .pipe(gulp.dest(config.dest))
     .pipe(plugins.size({title: 'ag.min.js'}));
 });

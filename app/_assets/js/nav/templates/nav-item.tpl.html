@@ -1,0 +1,14 @@
+<li ng-class="{dropdown: tniCtrl.menuItem.children, active: $state.includes(tniCtrl.menuItem.state)}">
+  <a ng-if="tniCtrl.menuItem.children" class="dropdown-toggle" data-toggle="dropdown">
+    <span ng-bind="tniCtrl.menuItem.title"></span> <span class="caret"></span>
+  </a>
+  <ul ng-if="tniCtrl.menuItem.children" class="dropdown-menu">
+    <li ng-repeat="child in tniCtrl.menuItem.children" ui-sref-active="active">
+      <a ng-if="child.state" ui-sref="{{child.state}}" ng-bind="child.title"></a>
+      <a ng-if="!child.state" ng-href="{{child.url}}" ng-bind="child.title" link-target="child.target"></a>
+    </li>
+  </ul>
+
+  <a ng-if="!tniCtrl.menuItem.children && tniCtrl.menuItem.state" ui-sref="{{tniCtrl.menuItem.state}}" ng-bind="tniCtrl.menuItem.title"></a>
+  <a ng-if="!tniCtrl.menuItem.children && !tniCtrl.menuItem.state" ng-href="{{tniCtrl.menuItem.url}}" ng-bind="tniCtrl.menuItem.title" link-target="tniCtrl.menuItem.target"></a>
+</li>

@@ -12,6 +12,7 @@ gulp.task('inject:index', function () {
     config.js.dest + '/libs/angular.js',
     config.js.dest + '/libs/!(lumx)*.js',
     config.js.dest + '/libs/lumx.js',
+    config.js.dest + '/**/!(app)*.js',
     config.js.dest + '/!(app)*.js',
     config.js.dest + '/app.js'
   ]

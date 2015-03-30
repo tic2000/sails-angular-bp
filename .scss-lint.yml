@@ -1,0 +1,24 @@
+scss_files: "app/_assets/**/*.scss"
+exclude: "app/_assets/bower_components/**"
+
+linters:
+  HexLength:
+    enabled: false
+
+  HexNotation:
+    enabled: false
+
+  ImportantRule:
+    enabled: false
+
+  MergeableSelector:
+    enabled: false
+
+  NameFormat:
+    enabled: false
+
+  SelectorFormat:
+    enabled: false
+
+  SpaceBeforeBrace:
+    enabled: false

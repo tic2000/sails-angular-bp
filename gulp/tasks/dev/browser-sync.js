@@ -7,7 +7,7 @@ var watch       = require('../../config').watch
  * Run the build task and start a server with BrowserSync
  */
 gulp.task('browsersync', ['build', 'watch:dev'], function() {
-  browsersync(config);
+  return browsersync(config);
 
   //gulp.watch(watch.copyhtml, ['copy:html']);
 });

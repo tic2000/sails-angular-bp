@@ -16,7 +16,7 @@ module.exports = {
         developmentAssets + '/fonts/*'
       ],
       options: {
-        watchTask: true,
+        //watchTask: true,
         proxy: 'dev.ag'
       }
     },
@@ -34,8 +34,8 @@ module.exports = {
     }
   },
   delete: {
-    src: [developmentAssets],
-    srcprod: [productionAssets],
+    src: [developmentAssets + '/*'],
+    srcprod: [productionAssets + '/*'],
   },
   sass: {
     src:  srcAssets + '/scss/',
@@ -44,14 +44,20 @@ module.exports = {
     options: {
       noCache: true,
       compass: false,
-      sourcemap: false,
-      //sourcemapPath: '../../_assets/scss'
+      sourcemap: true
     }
   },
   js: {
     src: srcAssets + '/js',
     dest: developmentAssets + '/js',
-    destprod: productionAssets + '/js'
+    destprod: productionAssets + '/js',
+    template: {
+      root: '/js/',
+      filename: 'templates.js',
+      standalone: true,
+      templateHeader: '(function(){angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {',
+      templateFooter: '}]);})();'
+    }
   },
   images: {
     src: srcAssets + '/images',
@@ -88,8 +94,9 @@ module.exports = {
     scripts: srcAssets + '/**/*.js',
     images:  srcAssets + '/images/**/*',
     sprites: srcAssets + '/images/**/*.png',
+    templates: srcAssets + '/js/**/*.tpl.html',
     copyhtml: src + '/*.html',
-    copyfonts: '**/fonts/*',
+    copyfonts: srcAssets + '/**/fonts/*',
     svg:     'vectors/*.svg'
   },
   scsslint: {
@@ -146,9 +153,9 @@ module.exports = {
     }
   },
   copyfonts: {
-    src: '**/fonts/*',
-    dest: developmentAssets + '/fonts',
-    destprod: productionAssets + '/fonts'
+    src: [srcAssets + '/**/fonts/**/*.{eot,svg,ttf,woff,woff2}', srcAssets + '/**/fonts/*.{eot,svg,ttf,woff,woff2}'],
+    dest: developmentAssets + '/fonts/',
+    destprod: productionAssets + '/fonts/'
   },
   copyhtml: {
     src: src + '/*.html',

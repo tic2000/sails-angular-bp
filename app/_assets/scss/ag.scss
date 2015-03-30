@@ -1,8 +1,57 @@
-
-@import "../bower_components/lumx/dist/scss/lumx";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import 'variables/colors';
 
 html {
-  background-image: url('../images/white_wall_hash_2X.png');
+  background-image: url(../images/white_wall_hash_2X.png);
   background-repeat: repeat;
-  background: $red-50;
+}
+
+.fa-spin {
+  animation: fa-spin 2s infinite linear;
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+.error-messages.ng-active {
+  padding-top: $padding-base-vertical;
+  padding-bottom: $padding-base-vertical;
+  padding-left: $padding-base-horizontal;
+  padding-right: $padding-base-horizontal;
+  border-radius: $border-radius-base;
+  margin-top: 5px;
+  position: relative;
+}
+
+.error-messages.ng-active:after {
+  position: absolute;
+  top: -10px;
+  content: "";
+  left: 20px;
+  border-style: solid;
+  border-color: transparent transparent $state-danger-bg;
+  border-width: 5px;
+}
+
+a.dropdown-toggle {
+  cursor: pointer;
 }
